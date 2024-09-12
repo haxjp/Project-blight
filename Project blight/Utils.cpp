@@ -1,14 +1,14 @@
 #include "Utils.hpp"
-MODULEINFO mInfo;
+
+CLIENT_MODULE cModule;
+
 uintptr_t* Utils::GetAddressfromSignature(vector<int> signature) {
-	GetModuleInformation(GetCurrentProcess(), GetModuleHandle(NULL), &mInfo, sizeof(MODULEINFO));//なんかプロセスの情報もらってくる！！
-	uintptr_t end = (mInfo.SizeOfImage);
 	bool found = true;
 	bool finish_flag = false;
 	uintptr_t n = 0;
 	uintptr_t m = 1;
-	for (;n < end; n++) {
-		if (signature.at(0) == *(BYTE*)((uintptr_t)(BaseAddress)+n)) {//まず先頭のsigがあってるか
+	for (;n < cModule.mInfo.SizeOfImage; n++) {
+		if (signature.at(0) == *(BYTE*)((uintptr_t)(cModule.BaseAddress)+n)) {//まず先頭のsigがあってるか
 			for (m = 1; m <= signature.size(); m++) {//２番目以降を確かめる
 				if (m == signature.size()) {//最後までいけたら２重ループ抜ける
 					finish_flag = true;
@@ -16,7 +16,7 @@ uintptr_t* Utils::GetAddressfromSignature(vector<int> signature) {
 				}
 				if (signature.at(m) == -1)//ワイルドカードの時とばす
 					continue;
-				if (signature.at(m) != *(BYTE*)((uintptr_t)(BaseAddress)+n + m))//２番目以降違うとき
+				if (signature.at(m) != *(BYTE*)((uintptr_t)(cModule.BaseAddress)+n + m))//２番目以降違うとき
 					break;
 
 			}
@@ -26,5 +26,12 @@ uintptr_t* Utils::GetAddressfromSignature(vector<int> signature) {
 		}
 	}
 
-	return (uintptr_t*)((uintptr_t)BaseAddress + n );
+	return (uintptr_t*)((uintptr_t)cModule.BaseAddress + n);
+}
+
+uintptr_t* Utils::FindPointer(vector<uintptr_t> pointer) {
+	uintptr_t* result = reinterpret_cast<uintptr_t*>(pointer.at(0) + (uintptr_t)cModule.BaseAddress);
+	for (int n = 1; n < pointer.size(); n++)
+		result = reinterpret_cast<uintptr_t*>(*result + pointer.at(n));
+	return result;
 }

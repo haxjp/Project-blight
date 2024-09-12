@@ -134,11 +134,17 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="class.hpp" />
     <ClCompile Include="dllmain.cpp" />
+    <ClCompile Include="Hooks.cpp" />
     <ClCompile Include="Sigs.cpp" />
     <ClCompile Include="Utils.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="ClientInstance.hpp" />
+    <ClInclude Include="GameMode.hpp" />
+    <ClInclude Include="Hooks.hpp" />
+    <ClInclude Include="Player.hpp" />
     <ClInclude Include="Sigs.hpp" />
     <ClInclude Include="Utils.hpp" />
   </ItemGroup>

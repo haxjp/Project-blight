@@ -33,10 +33,11 @@ void init(HINSTANCE HI) {
             ShowWindow(Handle, SW_NORMAL);
         }
     }
+    GetModuleInformation(GetCurrentProcess(), GetModuleHandle(NULL), &cModule.mInfo, sizeof(MODULEINFO));//なんかプロセスの情報もらってくる！！
+    cModule.BaseAddress = (uintptr_t*)(cModule.mInfo.lpBaseOfDll);
+    cModule.ClientInstance = Utils::FindPointer({ 0x5AD6078, 0x0,0x60,0x10,0x0 });
     MH_Initialize();
-    
-    cout << Utils::GetAddressfromSignature(gametick) << endl;
-    cout << Utils::GetAddressfromSignature(entitylist) << endl;
+
 
     for (;;) {
         if (GetAsyncKeyState(VK_END) & 1)
