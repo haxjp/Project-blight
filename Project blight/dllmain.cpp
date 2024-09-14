@@ -1,6 +1,6 @@
 #include "Utils.hpp"
 #include "Sigs.hpp"
-void init(HINSTANCE HI);
+DWORD init(HINSTANCE HI);
 
 BOOL APIENTRY DllMain(
     HINSTANCE hInstance,
@@ -14,7 +14,7 @@ BOOL APIENTRY DllMain(
 }
 
 uintptr_t* BaseAddress = (uintptr_t*)GetModuleHandle("minecraft.windows.exe");
-void init(HINSTANCE HI) {
+DWORD init(HINSTANCE HI) {
     //initialize and something...
     HWND Handle = GetConsoleWindow(); // create console for debug
     {
@@ -33,17 +33,26 @@ void init(HINSTANCE HI) {
             ShowWindow(Handle, SW_NORMAL);
         }
     }
-    GetModuleInformation(GetCurrentProcess(), GetModuleHandle(NULL), &cModule.mInfo, sizeof(MODULEINFO));//なんかプロセスの情報もらってくる！！
-    cModule.BaseAddress = (uintptr_t*)(cModule.mInfo.lpBaseOfDll);
-    cModule.ClientInstance = Utils::FindPointer({ 0x5AD6078, 0x0,0x60,0x10,0x0 });
     MH_Initialize();
-
+    GetModuleInformation(GetCurrentProcess(), GetModuleHandle(NULL), &cModule.mInfo, sizeof(MODULEINFO));//なんかプロセスの情報もらってくる！！
+    cModule.baseaddress = (uintptr_t*)(cModule.mInfo.lpBaseOfDll);
+    cModule.clientinstance = (ClientInstance*)Utils::FindPointer({ 0x5AD6078, 0x0,0x58,0x0,0x0 });//Get ClientInstance
+    if (cModule.clientinstance == nullptr)
+        return -1;
+    auto GetPlayer = Utils::CreateFastCall<Player*, ClientInstance*, uintptr_t*>(Utils::GetAddressfromSignature(getplayer));
+    cModule.player = GetPlayer(cModule.clientinstance, nullptr);//Get LocalPlayer
+    if (cModule.player == nullptr)
+        return -1;
+    cModule.gamemode = cModule.player->GetGameMode();//Get GameMode
+    if (cModule.gamemode == nullptr)
+        return -1;
 
     for (;;) {
         if (GetAsyncKeyState(VK_END) & 1)
             break;
     }
+
     ShowWindow(Handle, SW_HIDE);
     FreeLibraryAndExitThread(HI, 0);
-    return;
+    return 0;
 }

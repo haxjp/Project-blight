@@ -7,6 +7,11 @@
 #include <initializer_list>
 #include "minhook.h"
 #include "class.hpp"
+#include "Hooks.hpp"
+
+#include "ClientInstance.hpp"
+#include "GameMode.hpp"
+#include "Player.hpp"
 
 using namespace std;
 
@@ -16,6 +21,7 @@ extern CLIENT_MODULE cModule; // externêÈåæ
 namespace Utils {
 	uintptr_t* GetAddressfromSignature(vector<int> signature);
 	uintptr_t* FindPointer(vector<uintptr_t> pointer);
+
 
 	template<typename TRet, typename... TArgs>
 	auto CreateFastCall(uintptr_t* Func) {
