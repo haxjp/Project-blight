@@ -1,19 +1,5 @@
 #pragma once 
-#include <Windows.h>
-#include <TlHelp32.h>
-#include <Psapi.h>
-#include <iostream>
-#include <vector>
-#include <initializer_list>
-#include "minhook.h"
-#include "class.hpp"
-#include "Hooks.hpp"
-
-#include "ClientInstance.hpp"
-#include "GameMode.hpp"
-#include "Player.hpp"
-
-using namespace std;
+#include "Class.hpp"
 
 class CLIENT_MODULE; // ëOï˚êÈåæ
 extern CLIENT_MODULE cModule; // externêÈåæ
@@ -23,9 +9,20 @@ namespace Utils {
 	uintptr_t* FindPointer(vector<uintptr_t> pointer);
 
 
+
+
+	template<typename TRet, typename... TArgs>
+	using Fn = TRet(__fastcall*)(TArgs...);
+
 	template<typename TRet, typename... TArgs>
 	auto CreateFastCall(uintptr_t* Func) {
 		using Fn = TRet(__fastcall*)(TArgs...);
 		return reinterpret_cast<Fn>(Func);
 	}
+};
+
+class Hook {
+public:
+	Hook();
+	~Hook();
 };

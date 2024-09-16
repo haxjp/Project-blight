@@ -13,6 +13,12 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="SDK">
+      <UniqueIdentifier>{ad5e4588-bb62-4529-b967-43e9274ab14a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Hook">
+      <UniqueIdentifier>{f0853a97-55cc-4221-94c7-17ea6c9b3052}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -21,37 +27,43 @@
     <ClCompile Include="dllmain.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
-    <ClCompile Include="Sigs.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
     <ClCompile Include="Utils.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
-    <ClCompile Include="Hooks.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
-    <ClCompile Include="class.hpp">
+    <ClCompile Include="Class.hpp">
       <Filter>ヘッダー ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="Sigs.cpp">
+      <Filter>Hook</Filter>
+    </ClCompile>
+    <ClCompile Include="Function.cpp">
+      <Filter>Hook</Filter>
+    </ClCompile>
+    <ClCompile Include="PCH.cpp">
+      <Filter>ソース ファイル</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Sigs.hpp">
-      <Filter>ヘッダー ファイル</Filter>
-    </ClInclude>
     <ClInclude Include="Utils.hpp">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
-    <ClInclude Include="Hooks.hpp">
-      <Filter>ヘッダー ファイル</Filter>
-    </ClInclude>
     <ClInclude Include="Player.hpp">
-      <Filter>ヘッダー ファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="ClientInstance.hpp">
-      <Filter>ヘッダー ファイル</Filter>
+      <Filter>SDK</Filter>
     </ClInclude>
     <ClInclude Include="GameMode.hpp">
+      <Filter>SDK</Filter>
+    </ClInclude>
+    <ClInclude Include="ClientInstance.hpp">
+      <Filter>SDK</Filter>
+    </ClInclude>
+    <ClInclude Include="Sigs.hpp">
+      <Filter>Hook</Filter>
+    </ClInclude>
+    <ClInclude Include="PCH.hpp">
       <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="Function.hpp">
+      <Filter>Hook</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

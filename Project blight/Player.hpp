@@ -1,5 +1,5 @@
 #pragma once
-#include "class.hpp"
+#include "Class.hpp"
 
 class Player{
 public:
