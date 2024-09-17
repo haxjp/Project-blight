@@ -19,19 +19,13 @@
     <Filter Include="Hook">
       <UniqueIdentifier>{f0853a97-55cc-4221-94c7-17ea6c9b3052}</UniqueIdentifier>
     </Filter>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
+    <Filter Include="Utils">
+      <UniqueIdentifier>{63e01ccf-c9d0-40d6-972d-e84f43e61e32}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dllmain.cpp">
       <Filter>ソース ファイル</Filter>
-    </ClCompile>
-    <ClCompile Include="Utils.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
-    <ClCompile Include="Class.hpp">
-      <Filter>ヘッダー ファイル</Filter>
     </ClCompile>
     <ClCompile Include="Sigs.cpp">
       <Filter>Hook</Filter>
@@ -42,11 +36,14 @@
     <ClCompile Include="PCH.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
+    <ClCompile Include="Utils.cpp">
+      <Filter>Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="Class.hpp">
+      <Filter>Utils</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Utils.hpp">
-      <Filter>ヘッダー ファイル</Filter>
-    </ClInclude>
     <ClInclude Include="Player.hpp">
       <Filter>SDK</Filter>
     </ClInclude>
@@ -64,6 +61,9 @@
     </ClInclude>
     <ClInclude Include="Function.hpp">
       <Filter>Hook</Filter>
+    </ClInclude>
+    <ClInclude Include="Utils.hpp">
+      <Filter>Utils</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

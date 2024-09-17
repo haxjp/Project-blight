@@ -8,9 +8,6 @@ namespace Utils {
 	uintptr_t* GetAddressfromSignature(vector<int> signature);
 	uintptr_t* FindPointer(vector<uintptr_t> pointer);
 
-
-
-
 	template<typename TRet, typename... TArgs>
 	using Fn = TRet(__fastcall*)(TArgs...);
 
