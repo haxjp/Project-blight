@@ -1,6 +1,6 @@
 #include "Utils.hpp"
-#include "Sigs.hpp"
 #include "Function.hpp"
+#include "Hooks.hpp"
 DWORD init(HINSTANCE HI);
 
 BOOL APIENTRY DllMain(
@@ -39,12 +39,13 @@ DWORD init(HINSTANCE HI) {
     MH_Initialize();
     GetModuleInformation(GetCurrentProcess(), GetModuleHandle(NULL), &cModule.mInfo, sizeof(MODULEINFO));//なんかプロセスの情報もらってくる！！
     cModule.baseaddress = (uintptr_t*)(cModule.mInfo.lpBaseOfDll);
-    SetupFunctions();
-    cModule.clientinstance = (ClientInstance*)Utils::FindPointer({ 0x5AD6078, 0x0,0x58,0x0,0x0 });//Get ClientInstance
+    SetupFunctions();//setting up function to hook.
+    SetupHooks();
+    cModule.clientinstance = (ClientInstance*)Utils::FindPointer({ 0x5E33AB8, 0x0,0x58,0x0,0x0 });//Get ClientInstance
     if (cModule.clientinstance == nullptr)
         return -1;
 
-
+    HookGetEntityList.Enable();
 
 
     for (;;) {

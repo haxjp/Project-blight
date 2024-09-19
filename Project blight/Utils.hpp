@@ -17,9 +17,3 @@ namespace Utils {
 		return reinterpret_cast<Fn>(Func);
 	}
 };
-
-class Hook {
-public:
-	Hook();
-	~Hook();
-};
