@@ -1,17 +1,14 @@
 #pragma once
-
-//class declaration
-class ClientInstance;
-class Player;
-class GameMode;
-
+#include "ClientInstance.hpp"
+#include "Player.hpp"
+#include "GameMode.hpp"
 
 class CLIENT_MODULE {
 public:
 	MODULEINFO mInfo;
-	uintptr_t* baseaddress;
-	ClientInstance* clientinstance;
-	uintptr_t* entitylist;
-	Player* player;
-	GameMode* gamemode;
+	uintptr_t* baseaddress = nullptr;
+	ClientInstance* clientinstance = nullptr;
+	uintptr_t* entitylist = nullptr;
+	Player* player = nullptr;
+	GameMode* gamemode = nullptr;
 };

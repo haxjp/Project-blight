@@ -39,14 +39,16 @@ DWORD init(HINSTANCE HI) {
     MH_Initialize();
     GetModuleInformation(GetCurrentProcess(), GetModuleHandle(NULL), &cModule.mInfo, sizeof(MODULEINFO));//なんかプロセスの情報もらってくる！！
     cModule.baseaddress = (uintptr_t*)(cModule.mInfo.lpBaseOfDll);
-    SetupFunctions();//setting up function to hook.
-    SetupHooks();
     cModule.clientinstance = (ClientInstance*)Utils::FindPointer({ 0x5E33AB8, 0x0,0x58,0x0,0x0 });//Get ClientInstance
     if (cModule.clientinstance == nullptr)
         return -1;
-
-    HookGetEntityList.Enable();
-
+#if _DEBUG
+    cout << "DEBUG:" << endl
+        << "BaseAddress " << cModule.baseaddress << endl
+        << "ClientInstance " << cModule.clientinstance << endl;
+#endif
+    SetupFunctions();//setting up function to hook.
+    CreateHooks();
 
     for (;;) {
         if (GetAsyncKeyState(VK_END) & 1)

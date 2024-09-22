@@ -1,4 +1,5 @@
 #pragma once
+#include "Utils.hpp"
 class Hook {
 private:
 	void* Target;
@@ -15,9 +16,10 @@ public:
 	~Hook();
 };
 
-void SetupHooks();
+void CreateHooks();
 
-extern Hook HookGetEntityList;
-extern Hook HookGetPlayer;
-extern Hook HookGetKeymap;
-extern Hook HookUpdate;
+extern Hook Hook_GetEntityList;
+extern Hook Hook_GetPlayer;
+extern Hook Hook_GetKeymap;
+extern Hook Hook_Update;
+extern Hook Hook_GetServerInformation;

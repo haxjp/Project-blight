@@ -2,22 +2,46 @@
 
 CLIENT_MODULE cModule;
 
-uintptr_t* Utils::GetAddressfromSignature(vector<int> signature) {
-	bool found = true;
+uintptr_t* Utils::GetAddressfromSignature(string& signature) {
+	//string to vector
+	vector<int> v;
+	for (int n = 0; n < signature.size(); n++) {
+		if (signature.at(n) == ' ')
+			for (int m = 1; m <= 3; m++) {
+				if (n + m >= signature.size()) {
+					n = signature.size();
+					break;
+				}
+				else if (signature.at(n + m) == ' ') {
+					if (signature.substr(n + 1, m) == "? ") {
+						v.push_back(-1);
+						break;
+					}
+					else
+						v.push_back(stoi(signature.substr(n + 1, m - 1), 0, 16));
+				}
+			}
+	}
+
+	bool found = false;
 	bool finish_flag = false;
 	uintptr_t n = 0;
 	uintptr_t m = 1;
 	for (;n < cModule.mInfo.SizeOfImage; n++) {
-		if (signature.at(0) == *(BYTE*)((uintptr_t)(cModule.baseaddress)+n)) {//‚Ü‚¸æ“ª‚Ìsig‚ª‚ ‚Á‚Ä‚é‚©
-			for (m = 1; m <= signature.size(); m++) {//‚Q”Ô–ÚˆÈ~‚ðŠm‚©‚ß‚é
-				if (m == signature.size()) {//ÅŒã‚Ü‚Å‚¢‚¯‚½‚ç‚Qdƒ‹[ƒv”²‚¯‚é
+		if (v.at(0) == *(BYTE*)((uintptr_t)(cModule.baseaddress)+n)) {//‚Ü‚¸æ“ª‚Ìsig‚ª‚ ‚Á‚Ä‚é‚©
+			found = true;;
+			for (m = 1; m <= v.size(); m++) {//‚Q”Ô–ÚˆÈ~‚ðŠm‚©‚ß‚é
+				if (m == v.size()) {//ÅŒã‚Ü‚Å‚¢‚¯‚½‚ç‚Qdƒ‹[ƒv”²‚¯‚é
+					found = true;
 					finish_flag = true;
 					break;
 				}
-				if (signature.at(m) == -1)//ƒƒCƒ‹ƒhƒJ[ƒh‚ÌŽž‚Æ‚Î‚·
+				if (v.at(m) == -1)//ƒƒCƒ‹ƒhƒJ[ƒh‚ÌŽž‚Æ‚Î‚·
 					continue;
-				if (signature.at(m) != *(BYTE*)((uintptr_t)(cModule.baseaddress)+n + m))//‚Q”Ô–ÚˆÈ~ˆá‚¤‚Æ‚«
+				if (v.at(m) != *(BYTE*)((uintptr_t)(cModule.baseaddress) + n + m)) {//‚Q”Ô–ÚˆÈ~ˆá‚¤‚Æ‚«
+					found = false;
 					break;
+				}
 
 			}
 			if (finish_flag == true) {
@@ -25,7 +49,10 @@ uintptr_t* Utils::GetAddressfromSignature(vector<int> signature) {
 			}
 		}
 	}
-
+#if _DEBUG
+	if (found == false)
+		cout << "sig not found" << endl;
+#endif
 	return (uintptr_t*)((uintptr_t)cModule.baseaddress + n);
 }
 

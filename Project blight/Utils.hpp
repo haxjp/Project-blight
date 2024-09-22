@@ -5,7 +5,7 @@ class CLIENT_MODULE; // ‘O•ûéŒ¾
 extern CLIENT_MODULE cModule; // externéŒ¾
 
 namespace Utils {
-	uintptr_t* GetAddressfromSignature(vector<int> signature);
+	uintptr_t* GetAddressfromSignature(string& signature);
 	uintptr_t* FindPointer(vector<uintptr_t> pointer);
 
 	template<typename TRet, typename... TArgs>
