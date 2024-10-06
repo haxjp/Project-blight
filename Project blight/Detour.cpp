@@ -3,7 +3,6 @@
 
 void Detour_GetEntityList(uintptr_t* a1, DWORD* a2) {
 	auto Tramp = (Utils::Fn<void, uintptr_t*, DWORD*>)Hook_GetEntityList.Original;
-
 	cModule.entitylist = a1;
 }
 
@@ -26,8 +25,11 @@ uintptr_t* Detour_GetServerInformation(uintptr_t* a1,__int64 a2,__int64 a3,__int
 	auto Tramp = (Utils::Fn<uintptr_t*, uintptr_t*, __int64, __int64, __int64, __int64, __int64, __int64, __int64, __int64, __int64, __int64, int, int, int, __int64, char, char, __int64, int, __int64, __int64, char, __int64, __int64, __int64, char>)Hook_GetServerInformation.Original;
 #if _DEBUG
 	cout << "Server IP(Port): ";
-	if (*(BYTE*)(a5+7) == 0x00)
-		cout << (char*)(uintptr_t*)a5;
+
+	if (*(SHORT*)a5 == 0x303A)
+		cout << "Local World";
+	else if (*((BYTE*)a5 + 7)== NULL)
+		cout << *(char**)a5;
 	else
 		cout << (char*)a5;
 

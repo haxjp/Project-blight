@@ -7,20 +7,12 @@ int Hook::Create(void* target, void* hooker) {
 	this->Detour = hooker;
 	if (MH_CreateHook(this->Target, this->Detour, &this->Original) != MH_OK)
 		this->~Hook();
+	MH_EnableHook(this->Target);
 	return 0;
 }
-void Hook::Enable() {
-	MH_EnableHook(this->Target);
-	is_Enable = true;
-}
-void Hook::Disable() {
-	MH_DisableHook(this->Target);
-	is_Enable = false;
-}
-bool Hook::GetCondition() {
-	return this->is_Enable;
-}
+
 Hook::~Hook() {
+	MH_DisableHook(this->Target);
 	MH_RemoveHook(this->Target);
 }
 

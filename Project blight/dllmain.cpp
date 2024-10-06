@@ -40,8 +40,7 @@ DWORD init(HINSTANCE HI) {
     GetModuleInformation(GetCurrentProcess(), GetModuleHandle(NULL), &cModule.mInfo, sizeof(MODULEINFO));//なんかプロセスの情報もらってくる！！
     cModule.baseaddress = (uintptr_t*)(cModule.mInfo.lpBaseOfDll);
     cModule.clientinstance = (ClientInstance*)Utils::FindPointer({ 0x5E33AB8, 0x0,0x58,0x0,0x0 });//Get ClientInstance
-    if (cModule.clientinstance == nullptr)
-        return -1;
+
 #if _DEBUG
     cout << "DEBUG:" << endl
         << "BaseAddress " << cModule.baseaddress << endl
@@ -49,6 +48,7 @@ DWORD init(HINSTANCE HI) {
 #endif
     SetupFunctions();//setting up function to hook.
     CreateHooks();
+
 
     for (;;) {
         if (GetAsyncKeyState(VK_END) & 1)
