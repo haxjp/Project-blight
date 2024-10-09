@@ -1,6 +1,7 @@
 #pragma once
-#include "Class.hpp"
+
+#include"Actor.hpp"
 class GameMode {
 public:
-
+	void attack(Actor*);
 };

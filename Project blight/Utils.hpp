@@ -16,4 +16,10 @@ namespace Utils {
 		using Fn = TRet(__fastcall*)(TArgs...);
 		return reinterpret_cast<Fn>(Func);
 	}
+	template<typename TRet, typename... TArgs>
+	TRet CallVF(void* thisptr, size_t index, TArgs... argList) {
+		using TFunc = TRet(__fastcall*)(void*, TArgs...);
+		TFunc* vtable = *reinterpret_cast<TFunc**>(thisptr);
+		return vtable[index](thisptr, argList...);
+	}
 };

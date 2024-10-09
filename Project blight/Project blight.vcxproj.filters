@@ -51,6 +51,12 @@
     <ClCompile Include="Detour.cpp">
       <Filter>Hook\Detour</Filter>
     </ClCompile>
+    <ClCompile Include="GameMode.cpp">
+      <Filter>SDK</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>SDK</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Player.hpp">
@@ -79,6 +85,12 @@
     </ClInclude>
     <ClInclude Include="Detour.hpp">
       <Filter>Hook\Detour</Filter>
+    </ClInclude>
+    <ClInclude Include="Actor.hpp">
+      <Filter>SDK</Filter>
+    </ClInclude>
+    <ClInclude Include="Mob.hpp">
+      <Filter>SDK</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

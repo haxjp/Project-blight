@@ -1,7 +1,9 @@
 #pragma once
+#include"Mob.hpp"
 #include "GameMode.hpp"
 
-class Player{
+class Player:public Mob{
 public:
-
+	GameMode* getGamemode();
+	INT64 SWING();
 };
