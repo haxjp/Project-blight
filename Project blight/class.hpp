@@ -11,4 +11,5 @@ public:
 	uintptr_t* entitylist = nullptr;
 	Player* player = nullptr;
 	GameMode* gamemode = nullptr;
+	uintptr_t* item = nullptr;
 };

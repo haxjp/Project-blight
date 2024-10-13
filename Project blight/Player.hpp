@@ -5,5 +5,6 @@
 class Player:public Mob{
 public:
 	GameMode* getGamemode();
-	INT64 SWING();
+	uintptr_t Swing();
+	void setSneaking(bool);
 };

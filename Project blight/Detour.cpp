@@ -21,9 +21,13 @@ uintptr_t Detour_getKeymap(uintptr_t a1, int a2) {
 uintptr_t Detour_Update(__int64 a1, __int64 a2, __int64 a3) {
 	auto Tramp = (Utils::Fn<uintptr_t, __int64 , __int64 , __int64>)Hook_Update.Original;
 	if (GetAsyncKeyState(VK_HOME) & 1) {
-		for(int n = 0;n<2;n++)
-		cModule.gamemode->attack(cModule.player);
-		cModule.player->SWING();
+		for(int n = 0;n<1;n++)
+		cModule.gamemode->Attack(cModule.player);
+		cModule.player->Swing();
+		//cModule.player->setSneaking(true);
+		cModule.gamemode->UseItem(cModule.item);
+
+		//cout << Utils::CallVF<float>(cModule.player, 152) << endl;
 	}
 	return Tramp(a1, a2, a3);
 }
@@ -53,4 +57,3 @@ uintptr_t Detour_getCurrentSwingDuration(Player* a1) {
 	else
 	return 12;
 }
-

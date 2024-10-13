@@ -23,6 +23,7 @@ Hook Hook_Update;
 Hook Hook_ConnectionRequest;
 Hook Hook_getCurrentSwingDuration;
 
+
 void CreateHooks() {
 	Hook_getKeymap.Create(reinterpret_cast<void*>(getKeymap), reinterpret_cast<void*>(Detour_getKeymap));
 	Hook_getEntityList.Create(reinterpret_cast<void*>(getEntityList), reinterpret_cast<void*>(Detour_getEntityList));
@@ -30,4 +31,6 @@ void CreateHooks() {
 	Hook_Update.Create(reinterpret_cast<void*>(Update), reinterpret_cast<void*>(Detour_Update));
 	Hook_ConnectionRequest.Create(reinterpret_cast<void*>(ConnectionRequest), reinterpret_cast<void*>(Detour_ConnectionRequest));
 	Hook_getCurrentSwingDuration.Create(reinterpret_cast<void*>(getCurrentSwingDuration), reinterpret_cast<void*>(Detour_getCurrentSwingDuration));
+
+
 }

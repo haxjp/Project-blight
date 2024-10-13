@@ -3,5 +3,6 @@
 #include"Actor.hpp"
 class GameMode {
 public:
-	void attack(Actor*);
+	void Attack(Actor*);
+	uintptr_t UseItem(uintptr_t*);
 };
