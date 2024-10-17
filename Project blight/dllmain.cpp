@@ -40,7 +40,6 @@ DWORD init(HINSTANCE HI) {
     GetModuleInformation(GetCurrentProcess(), GetModuleHandle(NULL), &cModule.mInfo, sizeof(MODULEINFO));//なんかプロセスの情報もらってくる！！
     cModule.baseaddress = (uintptr_t*)(cModule.mInfo.lpBaseOfDll);
     cModule.clientinstance = (ClientInstance*)Utils::FindPointer({ 0x5E33AB8, 0x0,0x58,0x0,0x0 });//Get ClientInstance
-    cModule.item = Utils::FindPointer({ 0x5E36B98, 0x0,0x1A8,0x4F8,0x268,0xE28,0x30,0xD8,0x38 });
 #if _DEBUG
     cout << "DEBUG:" << endl
         << "BaseAddress " << cModule.baseaddress << endl

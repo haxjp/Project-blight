@@ -18,15 +18,31 @@ uintptr_t Detour_getKeymap(uintptr_t a1, int a2) {
 	auto Tramp = (Utils::Fn<uintptr_t, uintptr_t, int>)Hook_getKeymap.Original;
 	return Tramp(a1,a2);
 }
+
+uintptr_t Detour_getCurrentSwingDuration(Player* a1) {
+	if (a1 != cModule.player) {
+		auto Tramp = (Utils::Fn<uintptr_t, Player*>)Hook_getCurrentSwingDuration.Original;
+		return Tramp(a1);
+	}
+	else
+		return 12;
+}
+
+int Detour_getItemHanded(uintptr_t* a1, uintptr_t* a2, BYTE a3) {
+	auto Tramp = (Utils::Fn<int, uintptr_t*, uintptr_t*, BYTE>)Hook_getItemHanded.Original;
+	cModule.item = a1;
+	return Tramp(a1,a2,a3);
+}
+
+
 uintptr_t Detour_Update(__int64 a1, __int64 a2, __int64 a3) {
 	auto Tramp = (Utils::Fn<uintptr_t, __int64 , __int64 , __int64>)Hook_Update.Original;
 	if (GetAsyncKeyState(VK_HOME) & 1) {
-		for(int n = 0;n<1;n++)
-		cModule.gamemode->Attack(cModule.player);
-		cModule.player->Swing();
+		//cModule.gamemode->Attack(cModule.player);
+		//cModule.player->Swing();
 		//cModule.player->setSneaking(true);
-		cModule.gamemode->UseItem(cModule.item);
-
+		for(int n = 0;n<5;n++)
+		cModule.gamemode->UseItem((uintptr_t*)cModule.item+0x7);
 		//cout << Utils::CallVF<float>(cModule.player, 152) << endl;
 	}
 	return Tramp(a1, a2, a3);
@@ -49,11 +65,4 @@ uintptr_t* Detour_ConnectionRequest(uintptr_t* a1,__int64 a2,__int64 a3,__int64 
 	return Tramp(a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11, a12, a13, a14, a15, a16, a17, a18, a19, a20, a21, a22, a23, a24, a25, a26);
 }
 
-uintptr_t Detour_getCurrentSwingDuration(Player* a1) {
-	if (a1 != cModule.player) {
-	auto Tramp = (Utils::Fn<uintptr_t,Player*>)Hook_getCurrentSwingDuration.Original;
-	return Tramp(a1);
-	}
-	else
-	return 12;
-}
+

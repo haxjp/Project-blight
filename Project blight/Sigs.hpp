@@ -6,7 +6,7 @@ extern string update; // Minecraft::update (gametick mainthread)
 extern string connectionrequest;
 extern string getcurrentswingduration;
 extern string baseuseitem;
-//extern string sig;
+extern string getitemhanded;
 //extern string sig;
 //extern string sig;
 //extern string sig;
