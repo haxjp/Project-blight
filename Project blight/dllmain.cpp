@@ -39,7 +39,7 @@ DWORD init(HINSTANCE HI) {
     MH_Initialize();
     GetModuleInformation(GetCurrentProcess(), GetModuleHandle(NULL), &cModule.mInfo, sizeof(MODULEINFO));//なんかプロセスの情報もらってくる！！
     cModule.baseaddress = (uintptr_t*)(cModule.mInfo.lpBaseOfDll);
-    cModule.clientinstance = (ClientInstance*)Utils::FindPointer({ 0x5E33AB8, 0x0,0x58,0x0,0x0 });//Get ClientInstance
+    cModule.clientinstance = (ClientInstance*)Utils::FindPointer({ 0x6A9EEC8, 0x18,0x28,0x38,0x0 });//Get ClientInstance
 #if _DEBUG
     cout << "DEBUG:" << endl
         << "BaseAddress " << cModule.baseaddress << endl
@@ -50,6 +50,13 @@ DWORD init(HINSTANCE HI) {
 
 
     for (;;) {
+        if (GetAsyncKeyState(VK_HOME) & 1)
+        {
+            cout << cModule.player << endl;
+            cout << cModule.player->getLevel() << endl;
+
+            //Utils::CallVF<vector<Actor>*,void*>()
+        }
         if (GetAsyncKeyState(VK_END) & 1)
             break;
     }

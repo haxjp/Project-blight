@@ -13,7 +13,6 @@ public:
 
 void CreateHooks();
 
-extern Hook Hook_getEntityList;
 extern Hook Hook_getPlayer;
 extern Hook Hook_getKeymap;
 extern Hook Hook_getCurrentSwingDuration;

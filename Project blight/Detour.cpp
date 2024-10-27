@@ -1,11 +1,6 @@
 #include "Detour.hpp"
 #include "Utils.hpp"
 
-void Detour_getEntityList(uintptr_t* a1, DWORD* a2) {
-	auto Tramp = (Utils::Fn<void, uintptr_t*, DWORD*>)Hook_getEntityList.Original;
-	cModule.entitylist = a1;
-}
-
 uintptr_t Detour_getPlayer(uintptr_t a1) {
 	auto Tramp = (Utils::Fn<Player*, uintptr_t>)Hook_getPlayer.Original;
 	cModule.player = Tramp(a1);
@@ -28,22 +23,27 @@ uintptr_t Detour_getCurrentSwingDuration(Player* a1) {
 		return 12;
 }
 
-int Detour_getItemHanded(uintptr_t* a1, uintptr_t* a2, BYTE a3) {
-	auto Tramp = (Utils::Fn<int, uintptr_t*, uintptr_t*, BYTE>)Hook_getItemHanded.Original;
+int Detour_getItemHanded(uintptr_t* a1, uintptr_t* a2, uintptr_t a3, BYTE a4) {
+	auto Tramp = (Utils::Fn<int, uintptr_t*, uintptr_t*, uintptr_t, BYTE>)Hook_getItemHanded.Original;
 	cModule.item = a1;
-	return Tramp(a1,a2,a3);
+	return Tramp(a1,a2,a3,a4);
 }
 
 
 uintptr_t Detour_Update(__int64 a1, __int64 a2, __int64 a3) {
 	auto Tramp = (Utils::Fn<uintptr_t, __int64 , __int64 , __int64>)Hook_Update.Original;
 	if (GetAsyncKeyState(VK_HOME) & 1) {
-		//cModule.gamemode->Attack(cModule.player);
-		//cModule.player->Swing();
+		cModule.gamemode->Attack(cModule.player);
+		cModule.player->Swing();
+		vector<Actor*> a;
+
+		cout << Utils::CallVF<void*, decltype(&a)>((uintptr_t*)cModule.player->getLevel(), 0x150, &a) << endl;
+		//cout << cModule.player << "	" << cModule.gamemode << endl;
 		//cModule.player->setSneaking(true);
-		for(int n = 0;n<5;n++)
-		cModule.gamemode->UseItem((uintptr_t*)cModule.item+0x7);
+		//for(int n = 0;n<100;n++)
+		//cModule.gamemode->UseItem(cModule.item+0x7);
 		//cout << Utils::CallVF<float>(cModule.player, 152) << endl;
+		a.clear();
 	}
 	return Tramp(a1, a2, a3);
 }

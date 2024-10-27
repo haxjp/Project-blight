@@ -7,4 +7,5 @@ public:
 	GameMode* getGamemode();
 	uintptr_t Swing();
 	void setSneaking(bool);
+	uintptr_t* getLevel();
 };

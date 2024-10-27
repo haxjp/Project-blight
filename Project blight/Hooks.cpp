@@ -16,7 +16,6 @@ Hook::~Hook() {
 	MH_RemoveHook(this->Target);
 }
 
-Hook Hook_getEntityList;
 Hook Hook_getPlayer;
 Hook Hook_getKeymap;
 Hook Hook_getCurrentSwingDuration;
@@ -26,7 +25,6 @@ Hook Hook_ConnectionRequest;
 
 void CreateHooks() {
 	Hook_getKeymap.Create(reinterpret_cast<void*>(getKeymap), reinterpret_cast<void*>(Detour_getKeymap));
-	Hook_getEntityList.Create(reinterpret_cast<void*>(getEntityList), reinterpret_cast<void*>(Detour_getEntityList));
 	Hook_getPlayer.Create(reinterpret_cast<void*>(getPlayer), reinterpret_cast<void*>(Detour_getPlayer));
 	Hook_Update.Create(reinterpret_cast<void*>(Update), reinterpret_cast<void*>(Detour_Update));
 	Hook_ConnectionRequest.Create(reinterpret_cast<void*>(ConnectionRequest), reinterpret_cast<void*>(Detour_ConnectionRequest));
