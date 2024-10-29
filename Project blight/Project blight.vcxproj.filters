@@ -57,6 +57,9 @@
     <ClCompile Include="Player.cpp">
       <Filter>SDK</Filter>
     </ClCompile>
+    <ClCompile Include="Level.cpp">
+      <Filter>SDK</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Player.hpp">
@@ -90,6 +93,9 @@
       <Filter>SDK</Filter>
     </ClInclude>
     <ClInclude Include="Mob.hpp">
+      <Filter>SDK</Filter>
+    </ClInclude>
+    <ClInclude Include="Level.hpp">
       <Filter>SDK</Filter>
     </ClInclude>
   </ItemGroup>

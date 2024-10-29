@@ -55,6 +55,7 @@ DWORD init(HINSTANCE HI) {
             cout << cModule.player << endl;
             cout << cModule.player->getLevel() << endl;
 
+
             //Utils::CallVF<vector<Actor>*,void*>()
         }
         if (GetAsyncKeyState(VK_END) & 1)

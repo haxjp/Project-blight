@@ -161,6 +161,7 @@
     <ClCompile Include="Function.cpp" />
     <ClCompile Include="GameMode.cpp" />
     <ClCompile Include="Hooks.cpp" />
+    <ClCompile Include="Level.cpp" />
     <ClCompile Include="PCH.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
@@ -178,6 +179,7 @@
     <ClInclude Include="Function.hpp" />
     <ClInclude Include="GameMode.hpp" />
     <ClInclude Include="Hooks.hpp" />
+    <ClInclude Include="Level.hpp" />
     <ClInclude Include="Mob.hpp" />
     <ClInclude Include="PCH.hpp" />
     <ClInclude Include="Player.hpp" />

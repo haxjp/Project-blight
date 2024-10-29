@@ -1,7 +1,7 @@
 #pragma once
 #include "ClientInstance.hpp"
-#include "Player.hpp"
 #include "GameMode.hpp"
+#include "Player.hpp"
 
 class CLIENT_MODULE {
 public:
