@@ -30,16 +30,16 @@ int Detour_getItemHanded(uintptr_t* a1, uintptr_t* a2, uintptr_t a3, BYTE a4) {
 }
 
 
-uintptr_t Detour_Update(__int64 a1, __int64 a2, __int64 a3) {
-	auto Tramp = (Utils::Fn<uintptr_t, __int64 , __int64 , __int64>)Hook_Update.Original;
+uintptr_t Detour_Update(uintptr_t a1, uintptr_t a2, uintptr_t a3) {
+	auto Tramp = (Utils::Fn<uintptr_t, uintptr_t, uintptr_t, uintptr_t>)Hook_Update.Original;
 	if (GetAsyncKeyState(VK_HOME) & 1) {
 		cModule.gamemode->Attack(cModule.player);
 		cModule.player->Swing();
-		//auto list = cModule.player->getLevel()->getRuntimeActorList();
-		//cout << cModule.player << "	" << cModule.gamemode << endl;
+		//((Level*)0x0007FF65BAE30F0)->getRuntimeActorList();
+		cout << cModule.player << "	" << cModule.gamemode << " " << cModule.player->getLevel() << endl;
 		//cModule.player->setSneaking(true);
-		for(int n = 0;n<100;n++)
-		cModule.gamemode->UseItem(cModule.item+0x7);
+		//for(int n = 0;n<100;n++)
+		//cModule.gamemode->UseItem(cModule.item+0x7);
 		//cout << Utils::CallVF<float>(cModule.player, 152) << endl;
 	}
 	return Tramp(a1, a2, a3);
