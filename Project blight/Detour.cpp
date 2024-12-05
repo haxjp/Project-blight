@@ -35,11 +35,11 @@ uintptr_t Detour_Update(uintptr_t a1, uintptr_t a2, uintptr_t a3) {
 	if (GetAsyncKeyState(VK_HOME) & 1) {
 		cModule.gamemode->Attack(cModule.player);
 		cModule.player->Swing();
-		//((Level*)0x0007FF65BAE30F0)->getRuntimeActorList();
-		cout << cModule.player << "	" << cModule.gamemode << " " << cModule.player->getLevel() << endl;
+		//cout << cModule.player << "	" << cModule.gamemode << " " << cModule.player->getLevel() << endl;
+		cModule.player->getLevel()->getRuntimeActorList();
 		//cModule.player->setSneaking(true);
-		//for(int n = 0;n<100;n++)
-		//cModule.gamemode->UseItem(cModule.item+0x7);
+		for(int n = 0;n<100;n++)
+		cModule.gamemode->UseItem(cModule.item+0x7);
 		//cout << Utils::CallVF<float>(cModule.player, 152) << endl;
 	}
 	return Tramp(a1, a2, a3);
@@ -59,9 +59,9 @@ uintptr_t* Detour_ConnectionRequest(uintptr_t* a1,__int64 a2,__int64 a3,__int64 
 
 	cout << endl << "UserID: " << (char*)a21 << endl;
 #endif
-	auto Name = new char[1024];
-	Name = (char*)"nikunopi-mannzumeADHD";
-	//a21 = (__int64)&Name;
+	auto Name = new char[0xFFFFF];
+	cin >> Name;
+	a21 = (__int64)&Name;
 	return Tramp(a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11, a12, a13, a14, a15, a16, a17, a18, a19, a20, a21, a22, a23, a24, a25, a26);
 	delete Name;
 }
