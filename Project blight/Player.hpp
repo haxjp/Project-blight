@@ -7,6 +7,5 @@ class Player:public Mob{
 public:
 	GameMode* getGamemode();
 	uintptr_t Swing();
-	void setSneaking(bool);
 	Level* getLevel();
 };

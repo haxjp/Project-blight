@@ -2,8 +2,8 @@
 #include "Utils.hpp"
 #include"Function.hpp"
 
-void GameMode::Attack(Actor* a2) {
-	Utils::CallVF<void, Actor*>(this, 14, a2);
+void GameMode::Attack(Actor* a2,uintptr_t a3) {
+	Utils::CallVF<void, Actor*, uintptr_t>(this, 14, a2, a3);
 }
 
 uintptr_t GameMode::UseItem(uintptr_t* a2) {
