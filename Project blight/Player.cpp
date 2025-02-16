@@ -2,11 +2,11 @@
 #include "Utils.hpp"
 
 GameMode* Player::getGamemode() {
-	return *(GameMode**)(this + 0xB18);
+	return *(GameMode**)(this + 0xAD8);
 }
 
 uintptr_t Player::Swing() {
-	return Utils::CallVF<uintptr_t>(this, 113);
+	return Utils::CallVF<uintptr_t>(this, 111);
 }
 
 

@@ -1,11 +1,11 @@
 #include "Sigs.hpp"
 //dont forget adding SPACE at end start and end of string ex " 4C 8B 41 ? 4C "
-/*1.21.40*/string getplayer = " 48 89 6C 24 ? 57 41 56 41 57 48 83 EC ? 48 8B 91 ? ? ? ? 33 FF ";
+/*1.21.40*/string getplayer = " 48 81 C1 ? ? ? ? E9 ? ? ? ? CC CC CC CC 48 89 5C 24 ? 48 89 74 24 ? 57 48 83 EC ? 48 8B F9 ";
 /*1.21.40*/string getkeymap = " 48 83 EC 48 0F B6 C1 4C 8D 05 ";
 /*1.21.40*/string update = " 48 89 5C 24 ? 48 89 74 24 ? 57 41 54 41 55 41 56 41 57 48 83 EC ? 4C 89 44 24 ? 4C 8B E2 48 8B F9 48 8B 11 4D 8B FC 4C 2B FA 49 C1 FF ? 48 8B 41 ? 48 2B C2 48 C1 F8 ? 49 B8 ? ? ? ? ? ? ? ? 49 3B C0 0F 84 ? ? ? ? 4C 8D 68 ? 48 8B 49 ? 48 2B CA 48 C1 F9 ? 48 8B D1 48 D1 EA 49 8B C0 48 2B C2 48 3B C8 0F 87 ? ? ? ? 48 8D 04 0A 4D 8B F5 49 3B C5 4C 0F 43 F0 4D 3B F0 0F 87 ? ? ? ? 4A 8D 34 F5 ? ? ? ? 4C 89 74 24 ? 48 81 FE ? ? ? ? 72 ? 48 8D 4E ? 48 3B CE 0F 86 ? ? ? ? E8 ? ? ? ? 48 85 C0 0F 84 ? ? ? ? 48 8D 58 ? 48 83 E3 ? 48 89 43 ? EB ? 48 85 F6 74 ? 48 8B CE E8 ? ? ? ? 48 8B D8 48 89 44 24 ? 4C 89 74 24 ? EB ? 33 DB 4C 89 74 24 ? 48 89 5C 24 ? 4E 8D 34 FB 48 8B 44 24 ? 48 8B 00 49 89 06 4C 8B 47 ? 48 8B 17 48 8B CB 4D 3B E0 75 ? 4C 2B C2 EB ? 4D 8B C4 4C 2B C2 E8 ? ? ? ? 49 8D 4E ? 4C 8B 47 ? 4D 2B C4 49 8B D4 E8 ? ? ? ? 90 48 8B 0F 48 85 C9 74 ? 48 8B 47 ? 48 2B C1 48 C1 F8 ? 48 8D 14 C5 ? ? ? ? 48 81 FA ? ? ? ? 72 ? 48 83 C2 ? 4C 8B 41 ? 49 2B C8 48 8D 41 ? 48 83 F8 ? 77 ? 49 8B C8 E8 ? ? ? ? 48 89 1F 4A 8D 0C EB 48 89 4F ? 48 8D 0C 1E 48 89 4F ? 49 8B C6 4C 8D 5C 24 ? 49 8B 5B ? 49 8B 73 ? 49 8B E3 41 5F 41 5E 41 5D 41 5C 5F C3 FF 15 ? ? ? ? CC E8 ? ? ? ? CC E8 ? ? ? ? CC CC CC CC CC CC CC CC CC CC CC CC 48 89 5C 24 ";
-/*1.21.40*/string connectionrequest = " 40 55 53 56 57 41 54 41 55 41 56 41 57 48 8D AC 24 ? ? ? ? 48 81 EC ? ? ? ? 0F 29 B4 24 ? ? ? ? 48 8B 05 ? ? ? ? 48 33 C4 48 89 85 ? ? ? ? 49 8B D9 48 89 95 ";
+/*1.21.40*/string connectionrequest = " 40 55 53 56 57 41 54 41 55 41 56 41 57 48 8D AC 24 ? ? ? ? 48 81 EC ? ? ? ? 0F 29 B4 24 ? ? ? ? 48 8B 05 ? ? ? ? 48 33 C4 48 89 85 ? ? ? ? 49 8B D9 48 89 55 ";
 /*1.21.40*/string getcurrentswingduration = " 48 89 5C 24 ? 48 89 6C 24 ? 56 57 41 56 48 83 EC ? 8B 41 ? 48 8D 54 24 ? 48 8B 35 ";
-/*1.21.40*/string baseuseitem = " 48 89 5C 24 ? 48 89 74 24 ? 55 57 41 56 48 8D 6C 24 ? 48 81 EC ? ? ? ? 48 8B 05 ? ? ? ? 48 33 C4 48 89 45 ? 48 8B F2 48 8B F9 45 33 F6 4C 89 75 ? B9 ";
+/*1.21.40*/string baseuseitem = " 48 89 5C 24 ? 55 56 57 41 54 41 55 41 56 41 57 48 8D AC 24 ? ? ? ? 48 81 EC ? ? ? ? 48 8B 05 ? ? ? ? 48 33 C4 48 89 85 ? ? ? ? 48 8B DA 4C 8B E9 0F 57 C0 ";
 /*1.21.40*/string getitemhanded = " 48 89 5C 24 ? 55 56 57 41 54 41 55 41 56 41 57 48 8D 6C 24 ? 48 81 EC ? ? ? ? 0F 29 B4 24 ? ? ? ? 48 8B 05 ? ? ? ? 48 33 C4 48 89 45 ? 44 88 4C 24 ";
 
 

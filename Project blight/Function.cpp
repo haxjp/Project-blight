@@ -6,7 +6,7 @@ Utils::Fn<Player*, ClientInstance*, uintptr_t*>					getPlayer;
 Utils::Fn<char, uintptr_t*, uintptr_t*, uintptr_t, int*>		getKeymap;
 Utils::Fn<uintptr_t, Player*>									getCurrentSwingDuration;
 Utils::Fn<int, uintptr_t*, uintptr_t*, uintptr_t, BYTE>			getItemHanded;
-Utils::Fn<uintptr_t, uintptr_t, uintptr_t, uintptr_t>									Update;
+Utils::Fn<uintptr_t, uintptr_t, uintptr_t, uintptr_t>			Update;
 Utils::Fn<uintptr_t*, uintptr_t*, __int64, __int64, __int64, __int64, __int64, __int64, __int64, __int64, __int64, __int64, int, int, int, __int64, char, char, __int64, int, __int64, __int64, char, __int64, __int64, __int64, char> ConnectionRequest;
 Utils::Fn<uintptr_t, GameMode*, uintptr_t*>						G_BaseUseItem;
 

@@ -39,7 +39,7 @@ DWORD init(HINSTANCE HI) {
     MH_Initialize();
     GetModuleInformation(GetCurrentProcess(), GetModuleHandle(NULL), &cModule.mInfo, sizeof(MODULEINFO));//なんかプロセスの情報もらってくる！！
     cModule.baseaddress = (uintptr_t*)(cModule.mInfo.lpBaseOfDll);
-    cModule.clientinstance = (ClientInstance*)Utils::FindPointer({ 0x744ABD8, 0x38,0x8,0x38,0x9C0 });//Get ClientInstance
+    cModule.clientinstance = (ClientInstance*)Utils::FindPointer({ 0x7E02BD8, 0xE8, 0x10, 0x8, 0x40, 0x190, 0x0, 0x0 });//Get ClientInstance
 #if _DEBUG
     cout << "DEBUG:" << endl
         << "BaseAddress " << cModule.baseaddress << endl

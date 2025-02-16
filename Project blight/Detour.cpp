@@ -35,10 +35,7 @@ uintptr_t Detour_Update(uintptr_t a1, uintptr_t a2, uintptr_t a3) {
 	if (GetAsyncKeyState(VK_HOME) & 1) {
 		cModule.gamemode->Attack(cModule.player,0);
 		cModule.player->Swing();
-		//cout << cModule.player << "	" << cModule.gamemode << " " << cModule.player->getLevel() << endl;
-		//cModule.player->getLevel();
-		//for(int n = 0;n<100;n++)
-		//cModule.gamemode->UseItem(cModule.item+0x7);
+
 	}
 	return Tramp(a1, a2, a3);
 }
